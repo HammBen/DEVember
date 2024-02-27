@@ -2,6 +2,9 @@ import { FlatList, TextStyle, View, ViewStyle } from "react-native";
 import { useFonts, Inter_900Black } from "@expo-google-fonts/inter";
 import * as SplashScreen from "expo-splash-screen";
 import DayListItem from "./src/components/core/DayListItem";
+import { useEffect } from "react";
+
+SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const days = [...Array(24)].map((val, index) => index + 1);
@@ -9,6 +12,12 @@ export default function App() {
   let [fontsLoaded] = useFonts({
     Inter_900Black,
   });
+
+  useEffect(() => {
+    if (fontsLoaded) {
+      SplashScreen.hideAsync();
+    }
+  }, [fontsLoaded]);
 
   if (!fontsLoaded) {
     return null;

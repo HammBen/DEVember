@@ -1,8 +1,18 @@
 import { FlatList, TextStyle, View, ViewStyle } from "react-native";
+import { useFonts, Inter_900Black } from "@expo-google-fonts/inter";
+import * as SplashScreen from "expo-splash-screen";
 import DayListItem from "./src/components/core/DayListItem";
 
 export default function App() {
   const days = [...Array(24)].map((val, index) => index + 1);
+
+  let [fontsLoaded] = useFonts({
+    Inter_900Black,
+  });
+
+  if (!fontsLoaded) {
+    return null;
+  }
 
   return (
     <View style={$container}>

@@ -27,4 +27,5 @@ const $box: ViewStyle = {
 const $text: TextStyle = {
   color: "#9B4521",
   fontSize: 50,
+  fontFamily: "Inter_900Black",
 };

@@ -1,33 +1,8 @@
 import { FlatList, TextStyle, View, ViewStyle } from "react-native";
-import { useFonts, Inter_900Black } from "@expo-google-fonts/inter";
-import {
-  AmaticSC_400Regular,
-  AmaticSC_700Bold,
-} from "@expo-google-fonts/amatic-sc";
-import * as SplashScreen from "expo-splash-screen";
 import DayListItem from "./components/core/DayListItem";
-import { useEffect } from "react";
-
-SplashScreen.preventAutoHideAsync();
 
 export default function App() {
   const days = [...Array(24)].map((val, index) => index + 1);
-
-  let [fontsLoaded] = useFonts({
-    Inter_900Black,
-    AmaticSC_400Regular,
-    AmaticSC_700Bold,
-  });
-
-  useEffect(() => {
-    if (fontsLoaded) {
-      SplashScreen.hideAsync();
-    }
-  }, [fontsLoaded]);
-
-  if (!fontsLoaded) {
-    return null;
-  }
 
   return (
     <View style={$container}>
